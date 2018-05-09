@@ -12,6 +12,7 @@ var Videos = Backbone.Collection.extend({
         q: $('.form-control').val(),
         maxResults: 5,
         key: window.YOUTUBE_API_KEY,
+        type: 'video',
         videoEmbeddable: true
       },
       success: function(data) {
