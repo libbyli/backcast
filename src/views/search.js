@@ -9,8 +9,8 @@ var SearchView = Backbone.View.extend({
     this.collection.search();
   },
   
-  handleSearchEnter: function() {
-    if (event.keyCode == 13) {
+  handleSearchEnter: function(event) {
+    if (event.keyCode === 13) {
       this.collection.search();
     }
   },
