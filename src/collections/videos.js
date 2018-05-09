@@ -2,23 +2,22 @@ var Videos = Backbone.Collection.extend({
 
   model: Video,
   
-  initialize: function() {
-    // this.model.on('select', this.render, this);
-    this.listenTo(SearchView, 'search', this.search.bind(this));
-  },
-  
   search: function() {
-    console.log('search function invoked')
+    console.log('search function invoked');
+    var test = this;
     $.ajax({
       type: 'GET',
+      url: 'https://www.googleapis.com/youtube/v3/search',
       data: {
-        query: $('.form-control').val(),
+        part: 'snippet',
+        q: $('.form-control').val(),
         maxResults: 5,
-        key: YOUTUBE_API_KEY
+        key: 'AIzaSyC0Ki9aSX2m8xFZIUZAHpNVHu1SiYRV6cU'
       },
       success: function(data) {
-        console.log('success', data);
+        test.set(data.items);
+        console.log(test.at(0))
       }
     });
-  }
+  },
 });

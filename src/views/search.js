@@ -1,11 +1,18 @@
 var SearchView = Backbone.View.extend({
   
   events: {
-    'click .btn': 'handleSearch'
+    'click button': 'handleSearch',
+    'keyup .form-control': 'handleSearchEnter'
   },
   
   handleSearch: function() {
-    this.trigger('search', this)
+    this.collection.search();
+  },
+  
+  handleSearchEnter: function() {
+    if (event.keyCode == 13) {
+      this.collection.search();
+    }
   },
   
   initialize: function() {
